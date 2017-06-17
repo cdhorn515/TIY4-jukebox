@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SoundCloud Music Search</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>Really Awesome Music Site</h1>
+    </header>
+
+    <section class="player">
+      <audio class="music-player" controls="controls" src=""></audio>
+    </section>
+
+    <section class="search">
+      <form class="search-form" onsubmit="testingFunction()">
+        <input class="searchInput" type="text" name="artistSearch" value="" placeholder="Search for Artist">
+        <button id="artistSearchBtn" type="submit" name="" value="">Search</button>
+      </form>
+    </section>
+
+    <!--section will be flex container  -->
+    <section class="results"></section>
+    <!--flex item div to contain pic, title, and band name  -->
+    <div class="flex item">
+      <div class="result-pic">
+        <div class="songTitle">
+          <div class="bandName">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
