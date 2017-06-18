@@ -17,9 +17,9 @@
     </section>
 
     <section class="search">
-      <form class="search-form" onsubmit="testingFunction()">
-        <input class="searchInput" type="text" name="artistSearch" value="" placeholder="Search for Artist">
-        <button id="artistSearchBtn" type="submit" name="" value="">Search</button>
+      <form id="search-form" onsubmit="saveInput()">
+        <input class="searchInput" type="text" name="artistSearch" id="artistSearchInput" value="" placeholder="Search for Artist">
+        <button id="artistSearchBtn" type="submit" name="" value="artistSearch">Search</button>
       </form>
     </section>
 
@@ -34,7 +34,6 @@
         </div>
       </div>
     </div>
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
     <script src="main.js"></script>
 </body>
 
