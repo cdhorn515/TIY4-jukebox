@@ -1,66 +1,55 @@
 (function() {
     'use strict';
 
-    var tracksUrl = 'https://api.soundcloud.com/tracks/13158665?client_id=8538a1744a7fdaa59981232897501e04'
+    // var tracksUrl = 'https://api.soundcloud.com/tracks/13158665?client_id=8538a1744a7fdaa59981232897501e04';
     // var headers = {};
     // 1. First select and store the elements you'll be working with
     var containerNode = document.getElementById('container');
-
+    var formInput;
+    // var redirectUrl = 'http://api.soundcloud.com/resolve';
     var playerSectionNode = document.querySelector('.player');
-    var searchParameter;
     var playerNode = document.querySelector('.music-player');
     var formNode = document.getElementById('search-form');
     var searchButtonNode = document.getElementById('artistSearchBtn');
 
+    formNode.addEventListener('submit', saveInput);
+
     function saveInput(e) {
        e.preventDefault();
-       var inputValue = document.getElementById('artistSearchInput').value;
-       console.log(inputValue);
-       alert('you entered: ', inputValue);
+       formInput = e.srcElement.childNodes[1].value;
+      var url = 'http://api.soundcloud.com/tracks/';
+      //  fetchUrl = url + CLIENT_ID + formInput;
+      console.log(e);
+      //  var inputValue = document.getElementById('artistSearchInput').value;
+      //  console.log(inputValue);
+      formInput = formInput.toString();
+      console.log('formInput: ' + formInput);
+      console.log(formInput.toString());
+      // console.log(url + formInput);
+      //  alert('you entered: ' + formInput);
+      submitFetch(url, formInput);
      }
 
-    formNode.addEventListener('onsubmit', saveInput);
+function submitFetch(url, formInput){
+  const client_id = '8538a1744a7fdaa59981232897501e04';
+  var fetchUrl = url + '?client_id=' + client_id + '&q=' + formInput;
+console.log(fetchUrl);
+  // var fetchUrl = url + clientId + formInput + ;
+  // console.log(fetchUrl);
+  // console.log(typeof(formInput));
+  fetch(fetchUrl, {
+    append: 'client_id=' + client_id,
+    append: '&q=' + '"'+ formInput + '"'
+  }).then(function(response){
+    console.log(response);
+  });
+  // alert("fetching" + tracksUrl + formInput);
+  // console.log(tracksUrl);
+}
 
-
-
-  // function saveInput() {
-
-  // formNode.onsubmit = function() {
-
-
-    // var searchInputNode = document.getElementById('artistSearchInput')
-
-
-
-
-
-
-    //gets the form element that eventListener will go on
-
-    // function testingFunction(e){
-    //   e.preventDefault();
-    //   console.log();
-    //   var inputValue = document.getElementById('artistSearchInput').value;
-    //   console.log(inputValue);
-    // }
-
-
-
-
-    // });
-    // searchSectionNode.getAttribute('class', 'onsubmit');
-    // searchSectionNode.addEventListener('click', testingFunction);
-
-
-    // function testingFunction(e) {
-    //   e.preventDefault();
-    //   alert('getting info');
-    // }
-
-
-
-
-
+// try {
+//   headers.client_id = 'client_id=' + client_id;
+// }
 
 
 
