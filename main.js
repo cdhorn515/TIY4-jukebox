@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    // var tracksUrl = 'https://api.soundcloud.com/tracks/13158665?client_id=8538a1744a7fdaa59981232897501e04';
+    // var tracksUrl = 'https://api.soundcloud.com/tracks/13158665?CLIENT_ID=8538a1744a7fdaa59981232897501e04';
     // var headers = {};
     // 1. First select and store the elements you'll be working with
     var containerNode = document.getElementById('container');
@@ -14,10 +14,14 @@
 
     formNode.addEventListener('submit', saveInput);
 
+    //flex container nodes for results of api call:
+
+
+// console.log(CLIENT_ID);
     function saveInput(e) {
        e.preventDefault();
        formInput = e.srcElement.childNodes[1].value;
-      var url = 'http://api.soundcloud.com/tracks/';
+      var url = 'https://api.soundcloud.com/tracks/';
       //  fetchUrl = url + CLIENT_ID + formInput;
       console.log(e);
       //  var inputValue = document.getElementById('artistSearchInput').value;
@@ -31,32 +35,52 @@
      }
 
 function submitFetch(url, formInput){
-  const client_id = '8538a1744a7fdaa59981232897501e04';
-  var fetchUrl = url + '?client_id=' + client_id + '&q=' + formInput;
+  var fetchUrl = url + '?client_id=' + CLIENT_ID + '&q=' + formInput;
 console.log(fetchUrl);
   // var fetchUrl = url + clientId + formInput + ;
   // console.log(fetchUrl);
   // console.log(typeof(formInput));
-  fetch(fetchUrl, {
-    append: 'client_id=' + client_id,
-    append: '&q=' + '"'+ formInput + '"'
-  }).then(function(response){
-    console.log(response);
+  fetch(fetchUrl).then(function(response){
+    response.json().then(function(info){
+        console.log(info);
+        var resultsNode = document.querySelector('.results');
+        // loop through data and create divs
+        for (var i = 0; i < info.length; i++) {
+          var result = info[i];
+
+        var returned = document.createElement('div');
+        returned.setAttribute('class', 'flex-item');
+        resultsNode.appendChild(returned);
+
+        var picNode = document.createElement('div');
+        picNode.innerHTML = '<img src="' + result.artwork_url + '">';
+        returned.appendChild(picNode);
+
+        var songTitleNode = document.createElement('h5');
+        songTitleNode.setAttribute('class', 'songTitle');
+        songTitleNode.textContent = result.title;
+        returned.appendChild(songTitleNode);
+        returned.appendChild(songTitleNode);
+
+        // var bandNameNode = document.createElement('h4');
+        // bandNameNode.setAttribute('class', 'bandName');
+        // bandNameNode.textContent = info.
+        //
+        // ('bandName');
+
+
+
+        }
+    });
   });
-  // alert("fetching" + tracksUrl + formInput);
-  // console.log(tracksUrl);
 }
 
-// try {
-//   headers.client_id = 'client_id=' + client_id;
-// }
 
 
+    // 2. Create your `onSubmit` event for getting the user's search termdone
 
-    // 2. Create your `onSubmit` event for getting the user's search term
 
-
-    // 3. Create your `fetch` request that is called after a submission
+    // 3. Create your `fetch` request that is called after a submission done
 
 
     // 4. Create a way to append the fetch results to your page
