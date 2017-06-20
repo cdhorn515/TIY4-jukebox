@@ -55,21 +55,21 @@ console.log(fetchUrl);
 
         var picNode = document.createElement('div');
         picNode.setAttribute('class', 'picture');
-        var picture = result.artwork_url;
-        if (picture){
-        picNode.innerHTML = '<img src="' + picture + '">';
+
+        if (result.artwork_url){
+        picNode.innerHTML = '<img src="' + result.artwork_url + '">';
       } else {
         // picture = 'images/musicpic.jpg';
-        picNode.innerHTML = '<img srcg"images/musicpic/jpb">';
+        picNode.innerHTML = '<img src="./images/musicpic.jpg">';
       }
         returnedResults.appendChild(picNode);
 
         var songTitleNode = document.createElement('div');
-        songTitleNode.setAttribute('class', 'songTitle');
         returnedResults.appendChild(songTitleNode);
 
         var songTitle = document.createElement('a');
         songTitleNode.setAttribute('href', "#")
+        songTitleNode.setAttribute('class', 'songTitle');
         songTitleNode.textContent = result.title;
         songTitleNode.appendChild(songTitle);
 
