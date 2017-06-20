@@ -2,6 +2,42 @@ body {
   background-color: #60d9f1;
 }
 
-.container{
+h1, .container, .player, #search-form{
   text-align: center;
+}
+
+/*------------------Search section*/
+
+#artistSearchInput{
+  width: 240px;
+}
+
+/*---------------flex container with API results*/
+
+.results{
+  display: flex;
+  max-width: 100%vw;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.flex-item{
+  flex: 0 1 22%;
+  margin: 20px;
+}
+
+.picture{
+  text-align: center;
+}
+
+img{
+  height: 250px;
+
+}
+.songTitle{
+  text-align: center;
+  margin: 0 30px;
+  margin-top: 10px;
 }

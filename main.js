@@ -44,37 +44,51 @@ console.log(fetchUrl);
     response.json().then(function(info){
         console.log(info);
         var resultsNode = document.querySelector('.results');
+
         // loop through data and create divs
         for (var i = 0; i < info.length; i++) {
           var result = info[i];
 
-        var returned = document.createElement('div');
-        returned.setAttribute('class', 'flex-item');
-        resultsNode.appendChild(returned);
+        var returnedResults = document.createElement('div');
+        returnedResults.setAttribute('class', 'flex-item');
+        resultsNode.appendChild(returnedResults);
 
         var picNode = document.createElement('div');
-        picNode.innerHTML = '<img src="' + result.artwork_url + '">';
-        returned.appendChild(picNode);
+        picNode.setAttribute('class', 'picture');
+        var picture = result.artwork_url;
+        if (picture){
+        picNode.innerHTML = '<img src="' + picture + '">';
+      } else {
+        // picture = 'images/musicpic.jpg';
+        picNode.innerHTML = '<img srcg"images/musicpic/jpb">';
+      }
+        returnedResults.appendChild(picNode);
 
-        var songTitleNode = document.createElement('h5');
+        var songTitleNode = document.createElement('div');
         songTitleNode.setAttribute('class', 'songTitle');
+        returnedResults.appendChild(songTitleNode);
+
+        var songTitle = document.createElement('a');
+        songTitleNode.setAttribute('href', "#")
         songTitleNode.textContent = result.title;
-        returned.appendChild(songTitleNode);
-        returned.appendChild(songTitleNode);
+        songTitleNode.appendChild(songTitle);
+
 
         // var bandNameNode = document.createElement('h4');
         // bandNameNode.setAttribute('class', 'bandName');
         // bandNameNode.textContent = info.
         //
         // ('bandName');
-
-
-
         }
+        //add listener to  results section
+        resultsNode.addEventListener('click', getSelectedSong);
     });
   });
 }
 
+function getSelectedSong(e){
+  alert('loading music');
+}
 
 
     // 2. Create your `onSubmit` event for getting the user's search termdone
