@@ -37,7 +37,17 @@ img{
 
 }
 .songTitle{
-  text-align: center;
   margin: 0 30px;
   margin-top: 10px;
+}
+
+p{
+  text-decoration: underline;
+  color: blue;
+  text-align: center;
+}
+
+p:hover{
+  color: #1072FF;
+  cursor: pointer;
 }
