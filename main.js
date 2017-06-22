@@ -17,22 +17,27 @@
     searchInput.value = '';
   });
   var searchButtonNode = document.getElementById('artistSearchBtn');
-
   formNode.addEventListener('submit', saveInput);
   function saveInput(e) {
     e.preventDefault();
     formInput = e.srcElement.childNodes[1].value;
     var url = 'https://api.soundcloud.com/tracks/';
     formInput = formInput.toString();
-    submitFetch(url, formInput);
+    var removeSpace = encodeURI(formInput);
+    submitFetch(url, removeSpace);
   }
 
-  function submitFetch(url, formInput) {
-    var fetchUrl = url + '?client_id=' + CLIENT_ID + '&q=' + formInput;
+  function submitFetch(url, removeSpace) {
+    var fetchUrl = url + '?client_id=' + CLIENT_ID + '&q=' + removeSpace;
+    console.log(fetchUrl);
     fetch(fetchUrl).then(function(response) {
       response.json().then(function(info) {
         console.log(info);
         var resultsNode = document.querySelector('.results');
+        //clear screen with each search, code found on SO https://stackoverflow.com/questions/683366/remove-all-the-children-dom-elements-in-div
+        while(resultsNode.firstChild) {
+            resultsNode.removeChild(resultsNode.firstChild);
+        }
         // loop through data and create elements
         for (var i = 0; i < info.length; i++) {
            var result = info[i];
