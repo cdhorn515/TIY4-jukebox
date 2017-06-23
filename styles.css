@@ -9,9 +9,9 @@ body {
   text-align: center;
 }
 h1{
-  margin-left: 215px;
-  margin-top: 125px;
-  display: inline-block;
+    position: absolute;
+  margin-top: 75px;
+  margin-left: 40%;
   font-size: 50px;
 }
 .picture-left{
