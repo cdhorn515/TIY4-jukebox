@@ -1,10 +1,6 @@
 (function() {
   'use strict';
 
-  // var tracksUrl = 'https://api.soundcloud.com/tracks/13158665?CLIENT_ID=8538a1744a7fdaa59981232897501e04';
-  // var headers = {};
-  // 1. First select and store the elements you'll be working with
-
   const CLIENT_ID = '8538a1744a7fdaa59981232897501e04';
   var containerNode = document.getElementById('container');
   var formInput;
@@ -45,7 +41,7 @@
           var returnedResults = document.createElement('div');
           returnedResults.setAttribute('class', 'flex-item');
           resultsNode.prepend(returnedResults);
-          //div that hold picture
+          //div that holds picture
           var picNode = document.createElement('div');
           picNode.setAttribute('class', 'picture');
           if (result.artwork_url) {
@@ -63,7 +59,6 @@
           returnedResults.appendChild(songTitle);
 
           songTitle.addEventListener('click', function(e) {
-            // playerNode.setAttribute('src', e.target.href);
             console.log(arguments);
             getSongUrl(e.target.id);
           });
