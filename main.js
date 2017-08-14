@@ -21,17 +21,17 @@
     var url = 'https://api.soundcloud.com/tracks/';
     formInput = formInput.toString();
     var formInputWithoutSpaces = encodeURI(formInput);
-    submitFetch(url, formInputWithoutSpaces);
+    submitFetchAndCreateElements(url, formInputWithoutSpaces);
   }
 
-  function submitFetch(url, formInputWithoutSpaces) {
+  function submitFetchAndCreateElements(url, formInputWithoutSpaces) {
     var fetchUrl = url + '?client_id=' + CLIENT_ID + '&q=' + formInputWithoutSpaces;
     console.log(fetchUrl);
     fetch(fetchUrl).then(function(response) {
       response.json().then(function(info) {
         console.log(info);
         var resultsNode = document.querySelector('.results');
-        //clear screen with each search, code found on SO https://stackoverflow.com/questions/683366/remove-all-the-children-dom-elements-in-div
+        //clear screen with each search
         while (resultsNode.firstChild) {
           resultsNode.removeChild(resultsNode.firstChild);
         }
@@ -66,7 +66,7 @@
         }
       });
     });
-    var fetchUrl = '';
+    fetchUrl = '';
     formInput = '';
   }
 
