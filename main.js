@@ -4,7 +4,7 @@
   const CLIENT_ID = '8538a1744a7fdaa59981232897501e04';
   var containerNode = document.getElementById('container');
   var formInput;
-  var playerSectionNode = document.querySelector('.player');
+  // var playerSectionNode = document.querySelector('.player');
   var playerNode = document.querySelector('.music-player');
   var formNode = document.getElementById('search-form');
   var searchInput = document.getElementById('artistSearchInput');
